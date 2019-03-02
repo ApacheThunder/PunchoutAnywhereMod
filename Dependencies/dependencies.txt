@@ -1,0 +1,6 @@
+The following files need to be present here. Be sure Assembly-CSharp.dll is from a copy of the game that hasn't had MTG installed.
+
+Assembly-CSharp.Base.mm.dll
+Assembly-CSharp.dll
+UnityEngine.Base.mm.dll
+UnityEngine.CoreModule.dll

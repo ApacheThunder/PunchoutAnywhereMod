@@ -9,6 +9,17 @@
 *.userosscache
 *.sln.docstates
 
+# Dependencies end user must provide
+UnityEngine.ImageConversionModule.dll
+Assembly-CSharp.Base.mm.dll
+Assembly-CSharp.dll
+MonoMod.RuntimeDetour.dll
+MonoMod.Utils.dll
+UnityEngine.Base.mm.dll
+UnityEngine.CoreModule.dll
+
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
