@@ -42,11 +42,11 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine.Base.mm">
-      <HintPath>..\Dependencies\UnityEngine.Base.mm.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Dependencies\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule.Base.mm">
+      <HintPath>..\Dependencies\UnityEngine.CoreModule.Base.mm.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

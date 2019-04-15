@@ -1,4 +1,5 @@
 using Dungeonator;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,6 @@ namespace PunchoutAnywhereMod {
 
         public RoomHandler[] PunchoutRoomCluster;
 
-        // private static bool debugMode = false;
-
         private void Start() {
             ETGModConsole.Commands.AddGroup("playpunchout", delegate (string[] e) {
                 var levelOverrideState = GameManager.Instance.CurrentLevelOverrideState;
@@ -18,10 +17,14 @@ namespace PunchoutAnywhereMod {
                 if (levelOverrideState == GameManager.LevelOverrideState.FOYER) {
                     ETGModConsole.Log("ERROR: Punchout should not be started from the Breach!\nPlease select a character and start a run first!");
                     return;
-                }
-                // if (!debugMode) { ETGModGUI.CurrentMenu = ETGModGUI.MenuOpened.None; }
-                InitPunchOutRoomCluster();
-                StartCoroutine(StartPunchout());
+                } try {
+                    InitPunchOutRoomCluster();
+                    StartCoroutine(StartPunchout());
+                } catch (Exception Ex) {
+                    ETGModConsole.Log("ERROR: Exception during Room Cluster setup! Try again on a different floor!");
+                    Debug.Log("ERROR: Exception during Room Cluster setup! Try again on a different floor!");
+                    Debug.LogException(Ex);
+                }                
             });
         }
 

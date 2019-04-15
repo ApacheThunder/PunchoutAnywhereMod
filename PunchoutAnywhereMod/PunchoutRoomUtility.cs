@@ -32,12 +32,12 @@ namespace PunchoutAnywhereMod {
 
 
         public static PrototypeDungeonRoom[] prototypeDungeonRoomArray = new PrototypeDungeonRoom[] {
-            exit_room_basic,
-            RatChestHubRoom,
-            exit_room_basic,
-            basic_secret_room_012,
-            high_dragunfire_room_001,
-            PunchoutMinigameRoom
+            Instantiate(exit_room_basic),
+            Instantiate(RatChestHubRoom),
+            Instantiate(exit_room_basic),
+            Instantiate(basic_secret_room_012),
+            Instantiate(high_dragunfire_room_001),
+            Instantiate(PunchoutMinigameRoom)
         };
 
         public RoomHandler[] GeneratePunchoutRoomCluster(Action<RoomHandler> postProcessCellData = null, DungeonData.LightGenerationStyle lightStyle = DungeonData.LightGenerationStyle.FORCE_COLOR) {
@@ -52,19 +52,10 @@ namespace PunchoutAnywhereMod {
                 new IntVector2(10, 50)
             };
 
-            // prototypes[3].category = PrototypeDungeonRoom.RoomCategory.NORMAL;
-            // prototypes[4].category = PrototypeDungeonRoom.RoomCategory.NORMAL;
-
-
-            //prototypes[1].CustomMusicEvent = "Play_MUS_Dungeon_State_Secret";
-            // prototypes[1].UseCustomMusic = true;
-
             prototypeDungeonRoomArray[1].name = "PunchoutReward";
             prototypeDungeonRoomArray[5].name = "PunchoutEntrance";
             prototypeDungeonRoomArray[3].name = "PunchoutFireGunSecret";
             prototypeDungeonRoomArray[4].name = "PunchoutBabyDragunSecret";
-
-
 
             GameObject tileMapObject = GameObject.Find("TileMap");
             tk2dTileMap m_tilemap = tileMapObject.GetComponent<tk2dTileMap>();
@@ -127,8 +118,7 @@ namespace PunchoutAnywhereMod {
             
             ConnectClusteredPunchoutRooms(RoomClusterArray[2], RoomClusterArray[1], prototypeDungeonRoomArray[2], prototypeDungeonRoomArray[1], 2, 2, 5, 5);
             ConnectClusteredPunchoutRooms(RoomClusterArray[3], RoomClusterArray[1], prototypeDungeonRoomArray[3], prototypeDungeonRoomArray[1], 0, 8, 1, 0);
-            ConnectClusteredPunchoutRooms(RoomClusterArray[4], RoomClusterArray[3], prototypeDungeonRoomArray[4], prototypeDungeonRoomArray[3], 0, 3, 0, 1);
-            
+            ConnectClusteredPunchoutRooms(RoomClusterArray[4], RoomClusterArray[3], prototypeDungeonRoomArray[4], prototypeDungeonRoomArray[3], 0, 3, 0, 1);            
 
             for (int n = 0; n < RoomClusterArray.Length; n++) {
                 try {
@@ -257,7 +247,6 @@ namespace PunchoutAnywhereMod {
         }
         
         public void PostProcessWallCleanup(RoomHandler target) {
-            // if (target.area.prototypeRoom != prototypeDungeonRoomArray[1]) { return; }
             DungeonData data = GameManager.Instance.Dungeon.data;
             for (int i = 0; i < target.area.dimensions.x; i++) {
                 for (int j = 0; j < target.area.dimensions.y + 2; j++) {
@@ -298,8 +287,6 @@ namespace PunchoutAnywhereMod {
 
             int num = 6;
             int num2 = 3;
-            // int num = 76;
-            // int num2 = 73;
             IntVector2 d = new IntVector2(prototype.Width, prototype.Height);
 			IntVector2 intVector = new IntVector2(dungeon.data.Width + num, num);
 			int newWidth = dungeon.data.Width + num * 2 + d.x;
@@ -363,7 +350,6 @@ namespace PunchoutAnywhereMod {
 
             return roomHandler;
 		}
-
     }
 }
 
